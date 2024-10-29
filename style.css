@@ -1,0 +1,364 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+}
+
+:root {
+  --black: #353740;
+  --green: #D2F4D3;
+  --gray: #F7F7F8;
+  /*lighter gray #F7F7F8, darker gray #E9E9EE*/
+}
+
+
+@font-face {
+  font-family: 'Lucida Console';
+  src: url('fonts/LucidaConsole.woff2') format('woff2'),
+    url('fonts/LucidaConsole.woff') format('woff'),
+    url('fonts/LucidaConsole.ttf') format('truetype'),
+    url('fonts/LucidaConsole.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sitka Small';
+  src: url('fonts/Sitka-Small.woff2') format('woff2'),
+    url('fonts/Sitka-Small.woff') format('woff'),
+    url('fonts/Sitka-Small.ttf') format('truetype'),
+    url('fonts/Sitka-Small.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sitka Text';
+  src: url('fonts/Sitka-Text.woff2') format('woff2'),
+    url('fonts/Sitka-Text.woff') format('woff'),
+    url('fonts/Sitka-Text.ttf') format('truetype'),
+    url('fonts/Sitka-Text.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sitka Heading';
+  src: url('fonts/Sitka-Heading.woff2') format('woff2'),
+    url('fonts/Sitka-Heading.woff') format('woff'),
+    url('fonts/Sitka-Heading.ttf') format('truetype'),
+    url('fonts/Sitka-Heading.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sitka Text';
+  src: url('fonts/SitkaVF-Italic-Text.woff2') format('woff2'),
+    url('fonts/SitkaVF-Italic-Text.woff') format('woff'),
+    url('fonts/SitkaVF-Italic-Text.ttf') format('truetype'),
+    url('fonts/SitkaVF-Italic-Text.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  color: var(--black);
+}
+
+a {
+  text-decoration: none;
+  color: var(--black);
+}
+
+.small,
+body {
+  font-family: 'Sitka Small';
+  font-size: 1rem;
+  line-height: 1.2em;
+}
+
+/* .small, body {
+  font-family: 'Lucida Console';
+  font-size: 1rem;
+  line-height: 1.2em;
+}  */
+
+.italic {
+  font-family: 'Sitka Text';
+  font-style: italic;
+}
+
+.mid {
+  font-family: 'Sitka Small';
+  font-size: 1.6rem;
+  line-height: 1.7rem;
+}
+
+.big {
+  font-family: 'Sitka Text';
+  font-size: 2rem;
+  line-height: normal;
+  font-weight: 400;
+}
+
+.bigger {
+  font-family: 'Sitka Heading';
+  font-weight: normal;
+  font-size: 4rem;
+}
+
+#side-container {
+  width: 27vw;
+  height: 100vh;
+  display: flex;
+  flex-grow: 2;
+  flex-flow: column;
+  padding: 2rem 2.5rem 2rem 2.5rem;
+  background-color: var(--gray);
+  border-right: 2px solid var(--black);
+  box-sizing: border-box;
+}
+
+#top-title {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+#title {
+  width: 100%;
+  line-height: 1em;
+  padding: 0 1rem 1rem 1rem;
+
+}
+
+#subtitle {
+  padding: 0;
+}
+
+#nav-bar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0 0 1rem;
+}
+
+#extras-bar {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+  padding: 0 0 0 1rem;
+}
+
+.nav-click {
+  width: fit-content;
+  display: flex;
+  padding-top: 0.08em;
+  margin-top: 0.35em;
+  line-height: 1em;
+  user-select: none;
+  cursor: pointer;
+}
+
+.chap-click {
+  background-color: var(--green);
+  mix-blend-mode: multiply;
+}
+
+.nav-click-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.sublinks-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-click.active+.sublinks-container {
+  max-height: 100px;
+  /* Adjust to desired height */
+}
+
+.sublink {
+  width: fit-content;
+  padding-top: 0.2em;
+}
+
+.sublink:first-child {
+  margin-top: 0.3em;
+}
+
+#right-container {
+  flex-grow: 0;
+  width: 73vw;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+#right-container a {
+  text-decoration: none;
+  background-color: var(--green);
+  mix-blend-mode: multiply;
+  cursor: pointer;
+}
+
+.text-container {
+  position: absolute;
+  height: 100vh;
+  padding: 0 8vw 0 2.5rem;
+  overflow-y: scroll;
+  background-color: white;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.text-container::-webkit-scrollbar {
+  width: 1rem;
+}
+
+.text-container::-webkit-scrollbar-thumb {
+  background-color: var(--black);
+}
+
+.text-container:first-child {
+  padding: 0;
+  overflow: hidden;
+}
+
+.text-container.active {
+  z-index: 2;
+  opacity: 1;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.month-title,
+.chapter-title {
+  margin-top: 1rem;
+}
+
+/* alternating layout */
+
+.note-title {
+  padding-left: 3rem;
+  margin-top: 1rem;
+}
+
+.note-text {
+  padding: .5rem 0em .8rem 0em;
+}
+
+
+
+.next-link {
+  text-align: right;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.gpt {
+  padding: 0.2em 0em 1.8em 3rem;
+  font-family: 'Lucida Console';
+  font-size: 1.2rem;
+  line-height: 2rem;
+}
+
+.audio {
+  cursor: pointer;
+}
+
+
+.text-container a img {
+  display: none;
+}
+
+
+.three-box {
+  height: 10rem;
+}
+
+#three-chair.three-box {
+  height: 15rem !important;
+}
+
+.text-container[data-text="bibliografia"] a {
+  background-color: var(--green);
+  mix-blend-mode: multiply;
+}
+
+.text-container[data-text="bibliografia"] i {
+  font-style: italic;
+  font-family: 'Sitka Text';
+}
+
+
+.tooltip {
+  position: absolute;
+  z-index: 99;
+  border: 2px solid var(--black);
+  background-color: var(--gray);
+  font-size: 1rem;
+  line-height: 1.1rem;
+  min-height: 2rem;
+  max-width: 30rem;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  position: absolute;
+  pointer-events: none;
+
+}
+
+.tooltip .tooltip-image {
+  display: flex;
+}
+
+.tooltip img {
+  display: block;
+  width: 100%;
+}
+
+.tooltip .text {
+  padding: 0.5rem;
+}
+
+.tooltip.bottom {
+  top: 100%;
+}
+
+.tooltip.left {
+  right: auto;
+}
+
+.tooltip.right {
+  left: auto;
+}
