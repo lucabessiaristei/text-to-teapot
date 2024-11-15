@@ -18,13 +18,16 @@ $(document).ready(function () {
       var $sublinksContainer = $(this).parent().find('.sublinks-container');
       var sublinksContainerHeight = $sublinksContainer[0].scrollHeight;
     }
-    if (!$(this).hasClass('active')) {
-      // If this nav-click element is not active, close any other active nav-click elements and open this one
-      
-        $('.nav-click.active').removeClass('active');
-        $('.nav-click-wrapper .sublinks-container').css('max-height', 0);
-        $sublinksContainer.css('max-height', sublinksContainerHeight + 'px');
-      
+
+    if ($(this).hasClass('active')) {
+      // If this nav-click element is active, collapse it
+      $(this).removeClass('active');
+      $sublinksContainer.css('max-height', 0); // Collapse sublinks-container
+    } else {
+      // If this nav-click element is not active, handle expansion
+      $('.nav-click.active').removeClass('active');
+      $('.nav-click-wrapper .sublinks-container').css('max-height', 0);
+      $sublinksContainer.css('max-height', sublinksContainerHeight + 'px');
       $(this).addClass('active');
     }
   });
@@ -36,37 +39,49 @@ $(document).ready(function () {
     var activeText = $('.text-container.active');
     // scroll to the corresponding note title
     var rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
-var scrollTopOffset = 2 * rem;
-activeText.animate({
-  scrollTop: activeText.find('[data-note-number="' + noteNumber + '"]').offset().top - activeText.offset().top + activeText.scrollTop() - scrollTopOffset
-}, 500);
+    var scrollTopOffset = 2 * rem;
+    activeText.animate({
+      scrollTop: activeText.find('[data-note-number="' + noteNumber + '"]').offset().top - activeText.offset().top + activeText.scrollTop() - scrollTopOffset
+    }, 500);
 
   });
 
 
-// Next text container switch
 
-$('.next-link').on('click', function () {
-  // get the current active text container
-  const currentContainer = $('.text-container.active');
-  // get the next text container
-  const nextContainer = currentContainer.next('.text-container');
-  // if there is a next text container
-  if (nextContainer.length) {
-    // get the text data attribute of the next text container
-    const text = nextContainer.data('text');
-    // hide all text containers
-    $('.text-container').removeClass('active');
-    // show the selected text container
-    $(`.text-container[data-text=${text}]`).addClass('active');
-    // reset all scrolls
-    nextContainer.scrollTop(0);
-    // close any previously opened .sublinks-container
-    $('.nav-click-wrapper .sublinks-container').css('max-height', 0);
-    // open the corresponding month's nav-click-wrapper
-    $(`.nav-click[data-text=${text}]`).closest('.nav-click-wrapper').find('.nav-click').click();
-  }
-});
+  let isMobile = window.matchMedia("(max-width: 600px)");
+
+  $('.text-container').on('scroll', function () {
+    if (window.matchMedia("(max-width: 600px)").matches) {
+      // Close all sublinks containers
+      $('.nav-click.active').removeClass('active');
+      $('.nav-click-wrapper .sublinks-container').css('max-height', 0);
+    }
+  });
+
+
+  // Next text container switch
+
+  $('.next-link').on('click', function () {
+    // get the current active text container
+    const currentContainer = $('.text-container.active');
+    // get the next text container
+    const nextContainer = currentContainer.next('.text-container');
+    // if there is a next text container
+    if (nextContainer.length) {
+      // get the text data attribute of the next text container
+      const text = nextContainer.data('text');
+      // hide all text containers
+      $('.text-container').removeClass('active');
+      // show the selected text container
+      $(`.text-container[data-text=${text}]`).addClass('active');
+      // reset all scrolls
+      nextContainer.scrollTop(0);
+      // close any previously opened .sublinks-container
+      $('.nav-click-wrapper .sublinks-container').css('max-height', 0);
+      // open the corresponding month's nav-click-wrapper
+      $(`.nav-click[data-text=${text}]`).closest('.nav-click-wrapper').find('.nav-click').click();
+    }
+  });
 
 
 
