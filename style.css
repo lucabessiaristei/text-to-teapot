@@ -166,6 +166,10 @@ body {
   padding: 0 0 0 1rem;
 }
 
+#extras-bar.mobile {
+  display: none;
+}
+
 .nav-click {
   width: fit-content;
   display: flex;
@@ -273,7 +277,9 @@ body {
   padding: .5rem 0em .8rem 0em;
 }
 
-
+.note-holder a {
+  line-break: anywhere;
+}
 
 .next-link {
   text-align: right;
