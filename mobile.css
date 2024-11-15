@@ -1,0 +1,154 @@
+@media screen and (max-width: 600px) {
+    body {
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    .small,
+    body {
+        border: none;
+        font-family: 'Sitka Small';
+        font-size: .8rem;
+        line-height: 1.1em;
+    }
+
+    .mid {
+        font-size: 1rem;
+        line-height: 1.35rem;
+    }
+
+    .big {
+        font-size: 1rem;
+    }
+
+    .bigger {
+        font-size: 2.5rem;
+    }
+
+    #side-container {
+        flex-grow: initial;
+        width: 100%;
+        height: fit-content;
+        padding: 2rem 2.5rem 1.7rem 2.5rem;
+        border-right: none;
+        border-bottom: 2px solid var(--black);
+    }
+
+    #top-title {
+        flex-flow: row;
+        justify-content: space-between;
+        align-items: start;
+        gap: 2.1rem;
+    }
+
+    #title {
+        flex: auto;
+        width: fit-content;
+        padding: 0;
+    }
+
+    #subtitle {
+        margin-top: 0.3rem;
+        hyphens: manual;
+    }
+
+    #nav-bar {
+        height: fit-content;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 2rem 0 0 0;
+    }
+
+    #extras-bar:not(.mobile) {
+        display: none;
+    }
+
+    #extras-bar.mobile {
+        background-color: var(--gray);
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem 2.5rem 1.3rem 2.5rem;
+        display: flex;
+        border-top: 2px solid var(--black);
+    }
+
+    #extras-bar.mobile .mid {
+        font-size: 1.2rem;
+    }
+
+    #nav-bar .nav-click {
+        font-size: 0;
+    }
+
+    .nav-click::after {
+        font-size: 1.2rem;
+    }
+
+    .nav-click-wrapper:nth-of-type(1) .nav-click::after {
+        content: "Set";
+    }
+
+    .nav-click-wrapper:nth-of-type(2) .nav-click::after {
+        content: "Ott";
+    }
+
+    .nav-click-wrapper:nth-of-type(3) .nav-click::after {
+        content: "Nov";
+    }
+
+    .nav-click-wrapper:nth-of-type(4) .nav-click::after {
+        content: "Dic";
+    }
+
+    .nav-click-wrapper:nth-of-type(5) .nav-click::after {
+        content: "Gen";
+    }
+
+    .nav-click-wrapper:nth-of-type(6) .nav-click::after {
+        content: "Feb";
+    }
+
+    .nav-click-wrapper {
+        gap: 0.5rem;
+    }
+
+    .sublink:first-child {
+        margin-top: 1rem;
+    }
+
+    #right-container {
+        width: 100%;
+        overflow-x: hidden;
+        height: 100%;
+    }
+
+    .text-container {
+        height: 100%;
+        padding: 1rem 2.5rem 0 2.5rem;
+    }
+
+    .text-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .text-container::-webkit-scrollbar-thumb {
+        display: none;
+    }
+
+    .month-title,
+    .chapter-title {
+        margin-top: 1rem;
+    }
+
+    /* alternating layout */
+    .note-title {
+        padding-left: 3rem;
+        margin-top: 1rem;
+    }
+
+    .gpt {
+        font-size: .9rem;
+        line-height: 1.2rem;
+    }
+}
